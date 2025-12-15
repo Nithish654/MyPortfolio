@@ -1,9 +1,16 @@
 import emailjs from '@emailjs/browser';
 
 // CONFIGURATION
-const EMAILJS_SERVICE_ID = 'service_zqixylg';
-const EMAILJS_TEMPLATE_ID = 'template_cj4un2m';
-const EMAILJS_PUBLIC_KEY = 'XiFcCklJi7g88Ibdj';
+// ------------------------------------------------------------------
+// IMPORTANT: Ensure these match your EmailJS Dashboard exactly.
+// 1. Service ID: Found in "Email Services" tab.
+// 2. Template ID: Found in "Email Templates" tab (or in the URL when editing a template).
+// 3. Public Key: Found in "Account" (click your avatar) -> "API Keys" -> "Public Key".
+// ------------------------------------------------------------------
+
+const EMAILJS_SERVICE_ID = 'service_zqixylg'.trim();
+const EMAILJS_TEMPLATE_ID = 'template_pka7mqp'.trim(); // <--- DOUBLE CHECK THIS ID IN YOUR DASHBOARD
+const EMAILJS_PUBLIC_KEY = 'XiFcCklJi7g88Ibdj'.trim();
 
 interface ContactData {
   name: string;
@@ -27,20 +34,19 @@ export const api = {
 
       try {
         const templateParams = {
-          // Variables for Template Content & Subject
+          // Variables matching your screenshot configuration
           name: data.name,
           email: data.email,
           message: data.message,
+          
+          // Extra variables often required by templates
           from_name: data.name,
           from_email: data.email,
-          
-          // Variables for "Reply To" and defaults
           to_name: "Nithish V J",
           reply_to: data.email,
         };
 
-        // Log params to verify data before sending
-        console.log("Attempting to send email with params:", templateParams);
+        console.log("Sending email...", { service: EMAILJS_SERVICE_ID, template: EMAILJS_TEMPLATE_ID, params: templateParams });
 
         const response = await emailjs.send(
           EMAILJS_SERVICE_ID,
@@ -49,21 +55,22 @@ export const api = {
           EMAILJS_PUBLIC_KEY
         );
 
-        console.log("EmailJS Success:", response);
-
         if (response.status === 200) {
           return { success: true, message: 'Message sent successfully!' };
         } else {
-          // If status is not 200, treat as error
           throw new Error(`EmailJS Status: ${response.status} - ${response.text}`);
         }
       } catch (error: any) {
-        // Detailed Error Logging
-        console.error("EmailJS Error Details:", error);
-        
-        // Extract meaningful error text if available
-        const errorText = error?.text || error?.message || JSON.stringify(error);
-        
+        console.error("EmailJS Error:", error);
+
+        // Specific handling for the "Template ID not found" error
+        if (error?.text?.includes("template ID not found")) {
+          const msg = `Configuration Error: Template ID '${EMAILJS_TEMPLATE_ID}' was not found. Please check your EmailJS Dashboard and update services/api.ts`;
+          alert(msg); // Alert the user directly
+          throw new Error(msg);
+        }
+
+        const errorText = error?.text || error?.message || "Unknown error";
         throw new Error(`Failed to send message: ${errorText}`);
       }
     }
