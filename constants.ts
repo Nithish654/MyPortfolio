@@ -117,7 +117,7 @@ export const EDUCATION: Education[] = [
     id: '1',
     institution: "St. Joseph's Institute of Technology",
     year: '2021 – 2025',
-    degree: 'Electronics and Communication Engineering – CGPA: 7.4',
+    degree: 'Electronics and Communication Engineering – CGPA: 7.6',
     description: ['Focus on embedded systems and software engineering principles.']
   },
   {

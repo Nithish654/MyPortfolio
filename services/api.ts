@@ -5,9 +5,9 @@ import emailjs from '@emailjs/browser';
 // 2. Create a generic "Email Service" (connects to your Gmail)
 // 3. Create an "Email Template" (defines how the email looks)
 // 4. Paste your IDs below:
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID = 'service_zqixylg';
+const EMAILJS_TEMPLATE_ID = 'template_cj4un2m';
+const EMAILJS_PUBLIC_KEY = 'XiFcCklJi7g88Ibdj';
 
 interface ContactData {
   name: string;
@@ -27,13 +27,6 @@ export const api = {
       // Basic Validation
       if (!data.email.includes('@') || !data.name || !data.message) {
         throw new Error('Please fill in all fields correctly.');
-      }
-
-      // If keys are not set, warn the developer (you)
-      if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID') {
-        console.warn('EmailJS keys are missing in services/api.ts');
-        // Simulate success for demo purposes if keys aren't set yet
-        return new Promise(resolve => setTimeout(() => resolve({ success: true, message: 'Simulated Success (Set keys in api.ts)' }), 1000));
       }
 
       try {
