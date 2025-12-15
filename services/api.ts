@@ -30,12 +30,22 @@ export const api = {
       }
 
       try {
-        // MATCHING YOUR SCREENSHOT VARIABLES:
-        // Template uses {{name}}, {{email}}, and {{message}}
+        // ROBUST PARAMETER MAPPING
+        // We send both 'name' and 'from_name', 'email' and 'from_email' to cover all bases
+        // because your template Subject uses {{from_name}} while your Settings use {{name}}.
         const templateParams = {
-          name: data.name,       // Matches {{name}} in your template "From Name"
-          email: data.email,     // Matches {{email}} in your template "Reply To"
-          message: data.message  // Matches {{message}} in your template body
+          // Variables seen in your Settings screenshot
+          name: data.name,
+          email: data.email,
+          message: data.message,
+          
+          // Variables seen in your Content/Subject screenshot
+          from_name: data.name,   // For Subject: "New Portfolio Message from {{from_name}}"
+          from_email: data.email, // For Body: "{{from_email}}"
+          
+          // Standard defaults often required
+          to_name: "Nithish V J",
+          reply_to: data.email,
         };
 
         const response = await emailjs.send(
