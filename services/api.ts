@@ -1,10 +1,6 @@
 import emailjs from '@emailjs/browser';
 
 // CONFIGURATION
-// 1. Create an account at https://www.emailjs.com/
-// 2. Create a generic "Email Service" (connects to your Gmail)
-// 3. Create an "Email Template" (defines how the email looks)
-// 4. Paste your IDs below:
 const EMAILJS_SERVICE_ID = 'service_zqixylg';
 const EMAILJS_TEMPLATE_ID = 'template_cj4un2m';
 const EMAILJS_PUBLIC_KEY = 'XiFcCklJi7g88Ibdj';
@@ -30,23 +26,21 @@ export const api = {
       }
 
       try {
-        // ROBUST PARAMETER MAPPING
-        // We send both 'name' and 'from_name', 'email' and 'from_email' to cover all bases
-        // because your template Subject uses {{from_name}} while your Settings use {{name}}.
         const templateParams = {
-          // Variables seen in your Settings screenshot
+          // Variables for Template Content & Subject
           name: data.name,
           email: data.email,
           message: data.message,
+          from_name: data.name,
+          from_email: data.email,
           
-          // Variables seen in your Content/Subject screenshot
-          from_name: data.name,   // For Subject: "New Portfolio Message from {{from_name}}"
-          from_email: data.email, // For Body: "{{from_email}}"
-          
-          // Standard defaults often required
+          // Variables for "Reply To" and defaults
           to_name: "Nithish V J",
           reply_to: data.email,
         };
+
+        // Log params to verify data before sending
+        console.log("Attempting to send email with params:", templateParams);
 
         const response = await emailjs.send(
           EMAILJS_SERVICE_ID,
@@ -55,43 +49,46 @@ export const api = {
           EMAILJS_PUBLIC_KEY
         );
 
+        console.log("EmailJS Success:", response);
+
         if (response.status === 200) {
           return { success: true, message: 'Message sent successfully!' };
         } else {
-          throw new Error('Failed to send message');
+          // If status is not 200, treat as error
+          throw new Error(`EmailJS Status: ${response.status} - ${response.text}`);
         }
-      } catch (error) {
-        console.error("EmailJS Error:", error);
-        throw new Error('Failed to send message. Please try again.');
+      } catch (error: any) {
+        // Detailed Error Logging
+        console.error("EmailJS Error Details:", error);
+        
+        // Extract meaningful error text if available
+        const errorText = error?.text || error?.message || JSON.stringify(error);
+        
+        throw new Error(`Failed to send message: ${errorText}`);
       }
     }
   },
 
   resume: {
     download: async (): Promise<void> => {
-      // FIX: Use import.meta.env.BASE_URL to handle GitHub Pages subpaths correctly.
-      // This ensures we look for /MyPortfolio/resume.pdf in production, and /resume.pdf in dev.
       const baseUrl = import.meta.env.BASE_URL;
       const resumeUrl = `${baseUrl}resume.pdf`;
       
       try {
-        // Check if file exists (optional, but good for debugging)
         const response = await fetch(resumeUrl);
         if (response.status === 404) {
           alert("Resume file not found! Please ensure 'resume.pdf' is inside the 'public' folder.");
           return;
         }
 
-        // Trigger download
         const link = document.createElement('a');
         link.href = resumeUrl;
-        link.download = 'Nithish_VJ_Resume.pdf'; // The name the user sees when downloading
+        link.download = 'Nithish_VJ_Resume.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
       } catch (error) {
         console.error("Download error:", error);
-        // Fallback: Just open in new tab if programmatic fetch fails
         window.open(resumeUrl, '_blank');
       }
     }
