@@ -30,15 +30,18 @@ export const api = {
       }
 
       try {
+        // MATCHING YOUR SCREENSHOT VARIABLES:
+        // Template uses {{name}}, {{email}}, and {{message}}
+        const templateParams = {
+          name: data.name,       // Matches {{name}} in your template "From Name"
+          email: data.email,     // Matches {{email}} in your template "Reply To"
+          message: data.message  // Matches {{message}} in your template body
+        };
+
         const response = await emailjs.send(
           EMAILJS_SERVICE_ID,
           EMAILJS_TEMPLATE_ID,
-          {
-            from_name: data.name,
-            from_email: data.email,
-            message: data.message,
-            to_name: "Nithish V J", // Your name
-          },
+          templateParams,
           EMAILJS_PUBLIC_KEY
         );
 
