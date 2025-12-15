@@ -5,9 +5,9 @@ import emailjs from '@emailjs/browser';
 // 2. Create a generic "Email Service" (connects to your Gmail)
 // 3. Create an "Email Template" (defines how the email looks)
 // 4. Paste your IDs below:
-const EMAILJS_SERVICE_ID = 'service_zqixylg';
-const EMAILJS_TEMPLATE_ID = 'template_pka7mqp';
-const EMAILJS_PUBLIC_KEY = 'XiFcCklJi7g88Ibdj';
+const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';
 
 interface ContactData {
   name: string;
@@ -30,7 +30,7 @@ export const api = {
       }
 
       // If keys are not set, warn the developer (you)
-      if (EMAILJS_SERVICE_ID === 'service_zqixylg') {
+      if (EMAILJS_SERVICE_ID === 'YOUR_SERVICE_ID') {
         console.warn('EmailJS keys are missing in services/api.ts');
         // Simulate success for demo purposes if keys aren't set yet
         return new Promise(resolve => setTimeout(() => resolve({ success: true, message: 'Simulated Success (Set keys in api.ts)' }), 1000));
@@ -63,15 +63,16 @@ export const api = {
 
   resume: {
     download: async (): Promise<void> => {
-      // Method: Direct link to the file in the public folder
-      // Ensure you have a file named 'resume.pdf' in your 'public' folder
-      const resumeUrl = '/resumee.pdf';
+      // FIX: Use import.meta.env.BASE_URL to handle GitHub Pages subpaths correctly.
+      // This ensures we look for /MyPortfolio/resume.pdf in production, and /resume.pdf in dev.
+      const baseUrl = import.meta.env.BASE_URL;
+      const resumeUrl = `${baseUrl}resume.pdf`;
       
       try {
         // Check if file exists (optional, but good for debugging)
         const response = await fetch(resumeUrl);
         if (response.status === 404) {
-          alert("Resume file not found! Please add 'resume.pdf' to the public folder.");
+          alert("Resume file not found! Please ensure 'resume.pdf' is inside the 'public' folder.");
           return;
         }
 
@@ -84,7 +85,8 @@ export const api = {
         document.body.removeChild(link);
       } catch (error) {
         console.error("Download error:", error);
-        throw new Error('Failed to download resume');
+        // Fallback: Just open in new tab if programmatic fetch fails
+        window.open(resumeUrl, '_blank');
       }
     }
   }

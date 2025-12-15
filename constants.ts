@@ -33,7 +33,7 @@ export const PROJECTS: Project[] = [
     category: 'Software',
     githubLink: 'https://github.com/nithish654',
     liveLink: 'https://nithish654.github.io/FitEncyclo/',
-    image: 'https://picsum.photos/600/400?random=1'
+    image: 'https://t4.ftcdn.net/jpg/01/14/80/25/360_F_114802596_jo16wrf2ByFzfHQOMmU2Edgc0IlYhSuH.jpg'
   },
   {
     id: '2',
@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
     category: 'Software',
     githubLink: 'https://github.com/nithish654',
     liveLink: 'https://nithish654.github.io/CampusCoreX/',
-    image: 'https://picsum.photos/600/400?random=2'
+    image: 'https://media.istockphoto.com/id/1159030397/vector/vector-of-a-child-a-boy-looking-at-the-stairs-leading-to-the-door-of-modern-digital-world.jpg?s=612x612&w=0&k=20&c=cPMvHwuxLy3rWZaHzhiXY_TFZXkl0KGp-wHGFA8vak4='
   },
   {
     id: '3',
@@ -53,7 +53,7 @@ export const PROJECTS: Project[] = [
     category: 'Software',
     githubLink: 'https://github.com/nithish654',
     liveLink: 'https://nithish654.github.io/IndiKart/',
-    image: 'https://picsum.photos/600/400?random=3'
+    image: 'https://media.istockphoto.com/id/1471521270/photo/a-female-hand-and-a-shopping-cart-icon-concept-of-starting-a-sale-online-shopping-increasing.jpg?s=612x612&w=0&k=20&c=cxRKLCrn4mNrZlnsc7m5ANBB0pRfB3YaBsfHkuj8HAg='
   },
   // HARDWARE PROJECTS
   {
@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
     description: 'Developed a long-range communication system for agricultural monitoring using LoRa technology to transmit sensor data efficiently.',
     techStack: ['LoRa', 'IoT', 'Sensors'],
     category: 'Hardware',
-    image: 'https://picsum.photos/600/400?random=4'
+    image: 'https://www.vhv.rs/dpng/d/544-5447876_riot-weblogos-03-lora-logo-hd-png-download.png'
   },
   {
     id: '5',
@@ -70,7 +70,7 @@ export const PROJECTS: Project[] = [
     description: 'A smart safety helmet integrated with Arduino and GSM modules to detect accidents and send automated SOS alerts with location data.',
     techStack: ['Arduino', 'GSM Module', 'Embedded C'],
     category: 'Hardware',
-    image: 'https://picsum.photos/600/400?random=5'
+    image: 'https://justtotaltech.com/wp-content/uploads/2021/03/images-42.jpeg'
   },
   {
     id: '6',
@@ -78,7 +78,7 @@ export const PROJECTS: Project[] = [
     description: 'Designed a D-Shaped Dual-Core Refractive Index sensor using Surface Plasmon Resonance for high-sensitivity detection applications.',
     techStack: ['Optical Sensors', 'Simulation', 'Research'],
     category: 'Hardware',
-    image: 'https://picsum.photos/600/400?random=6'
+    image: 'https://media.istockphoto.com/id/1257429592/photo/blood-cells.jpg?s=612x612&w=0&k=20&c=QsR4mElj5XVhiHWfq_8Kgn3PKP7WDQ7_7N2MWAl1RGs='
   }
 ];
 
