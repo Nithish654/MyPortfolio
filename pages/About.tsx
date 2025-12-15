@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, Heart, Target, Code2, Database, Wrench, Languages } from 'lucide-react';
+import { User, Heart, Target, Database, Wrench, Languages } from 'lucide-react';
 import { SKILLS } from '../constants';
 
 const About: React.FC = () => {
