@@ -13,7 +13,7 @@ export const NAV_ITEMS: NavItem[] = [
 
 export const HERO_DATA = {
   name: "Nithish V J",
-  role: "Front-End Developer",
+  role: "Full Stack Developer",
   tagline: "I build scalable, real-world web applications.",
   typingTexts: ["Full Stack Software Developer", "Front-End Developer", "React Specialist", "JavaScript Developer", "UI/UX Enthusiast"],
   stats: [
