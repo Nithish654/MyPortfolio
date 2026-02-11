@@ -32,7 +32,7 @@ const About: React.FC = () => {
             About <span className="text-primary-500">Me</span>
           </h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            A passionate Front-End Developer transforming ideas into reality through code.
+            A passionate Full Stack Developer transforming ideas into reality through code.
           </p>
         </motion.div>
 
@@ -51,8 +51,7 @@ const About: React.FC = () => {
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">Profile</h3>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                  I'm a passionate Front-End Developer with strong foundations in JavaScript and modern web technologies.
-                  I enjoy converting real-world problems into scalable digital solutions. My journey involves deep diving into React architectures and crafting responsive interfaces.
+                  Motivated and detail-oriented Full Stack Developer focused on modern web technologies. Skilled in building responsive frontend applications and supporting backend development, with hands-on experience in HTML, CSS, JavaScript, and React. Experienced in Java- and Python-based application development with knowledge of API integration, SQL, and basic GraphQL concepts. Dedicated to delivering scalable and user-focused solutions.
                 </p>
              </div>
 

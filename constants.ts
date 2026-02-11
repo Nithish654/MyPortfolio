@@ -15,7 +15,7 @@ export const HERO_DATA = {
   name: "Nithish V J",
   role: "Front-End Developer",
   tagline: "I build scalable, real-world web applications.",
-  typingTexts: ["Front-End Developer", "React Specialist", "JavaScript Developer", "UI/UX Enthusiast"],
+  typingTexts: ["Full Stack Software Developer", "Front-End Developer", "React Specialist", "JavaScript Developer", "UI/UX Enthusiast"],
   stats: [
     { label: "Web Projects", value: "3+" },
     { label: "Hardware Projects", value: "3+" },
@@ -139,21 +139,21 @@ export const EDUCATION: Education[] = [
 export const CERTIFICATES: Certificate[] = [
   {
     id: '1',
-    title: 'Java Developer Certificate',
-    issuer: 'NIIT',
-    date: '2023',
+    title: 'IBM Full Stack Software Developer PC (Professional Certificate)',
+    issuer: 'IBM Skills Network',
+    date: '2026',
   },
   {
     id: '2',
-    title: 'GraphQL Developer Certificate',
-    issuer: 'Apollo GraphQL',
+    title: 'Java Developer Certificate',
+    issuer: 'NIIT',
     date: '2023',
   },
   {
     id: '3',
     title: 'API Designer Certificate',
     issuer: 'API Academy',
-    date: '2023',
+    date: '2024',
   },
   {
     id: '4',
@@ -166,15 +166,25 @@ export const CERTIFICATES: Certificate[] = [
     title: 'Web Development Certificate',
     issuer: 'Infosys Springboard',
     date: '2024',
+  },
+  {
+    id: '6',
+    title: 'GraphQL Developer Certificate',
+    issuer: 'Apollo GraphQL',
+    date: '2024',
   }
 ];
 
 export const SKILLS: Skill[] = [
   // Languages
+  { name: 'TypeScript', level: 85, category: 'Language' },
   { name: 'JavaScript', level: 90, category: 'Language' },
+  { name: 'Python', level: 80, category: 'Language' },
   { name: 'Java', level: 85, category: 'Language' },
   
   // Backend / BaaS
+  { name: 'Django', level: 75, category: 'Backend/BaaS' },
+  { name: 'Docker', level: 70, category: 'Backend/BaaS' },
   { name: 'Supabase', level: 80, category: 'Backend/BaaS' },
   { name: 'Appwrite', level: 75, category: 'Backend/BaaS' },
   { name: 'Firebase', level: 80, category: 'Backend/BaaS' },
@@ -186,5 +196,5 @@ export const SKILLS: Skill[] = [
 ];
 
 export const MARQUEE_ITEMS = [
-  "JavaScript", "React", "Java", "Tailwind", "Supabase", "Firebase", "Appwrite", "Git", "VS Code", "API Design"
+  "JavaScript", "React", "Java", "Tailwind", "Supabase", "Firebase", "Appwrite", "Git", "VS Code", "API Design", "Django", "Docker", "TypeScript", "Python"
 ];

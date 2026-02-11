@@ -1,3 +1,4 @@
+
 import emailjs from '@emailjs/browser';
 
 // CONFIGURATION
@@ -9,7 +10,7 @@ import emailjs from '@emailjs/browser';
 // ------------------------------------------------------------------
 
 const EMAILJS_SERVICE_ID = 'service_zqixylg'.trim();
-const EMAILJS_TEMPLATE_ID = 'template_pka7mqp'.trim(); // <--- DOUBLE CHECK THIS ID IN YOUR DASHBOARD
+const EMAILJS_TEMPLATE_ID = 'template_cj4un2m'.trim(); // <--- DOUBLE CHECK THIS ID IN YOUR DASHBOARD
 const EMAILJS_PUBLIC_KEY = 'XiFcCklJi7g88Ibdj'.trim();
 
 interface ContactData {
@@ -78,7 +79,8 @@ export const api = {
 
   resume: {
     download: async (): Promise<void> => {
-      const baseUrl = import.meta.env.BASE_URL;
+      // Fix: Cast import.meta to any to resolve property 'env' error when vite/client types are missing
+      const baseUrl = (import.meta as any).env?.BASE_URL || '/';
       const resumeUrl = `${baseUrl}resume.pdf`;
       
       try {
