@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Code, Database, Layers, Terminal } from 'lucide-react';
+import { ArrowRight, Download, Code, Database, Layers, Terminal, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { HERO_DATA, MARQUEE_ITEMS } from '../constants';
 
@@ -47,7 +47,11 @@ const Home: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-xl md:text-2xl font-medium text-primary-600 dark:text-primary-400 mb-4">
+            <div className="inline-flex items-center px-3 py-1 bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 rounded-full text-sm font-bold mb-6">
+              <Zap size={14} className="mr-2 fill-current" />
+              Available for new projects
+            </div>
+            <h2 className="text-xl md:text-2xl font-medium text-gray-600 dark:text-gray-400 mb-4">
               Hi, I'm {HERO_DATA.name}
             </h2>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
@@ -92,6 +96,20 @@ const Home: React.FC = () => {
             className="hidden lg:block relative"
           >
              <div className="relative w-full aspect-square max-w-md mx-auto">
+               <motion.div 
+                 animate={{ 
+                   y: [0, -20, 0],
+                   rotate: [0, 5, 0]
+                 }}
+                 transition={{ 
+                   duration: 4, 
+                   repeat: Infinity,
+                   ease: "easeInOut"
+                 }}
+                 className="absolute -top-12 -right-12 text-primary-500/20 z-0"
+               >
+                 <Zap size={160} fill="currentColor" />
+               </motion.div>
                <div className="absolute inset-0 bg-gradient-to-tr from-primary-500 to-purple-600 rounded-2xl rotate-6 opacity-20 blur-lg"></div>
                <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 border border-gray-100 dark:border-gray-700 h-full flex flex-col justify-center">
                  <div className="space-y-6">
